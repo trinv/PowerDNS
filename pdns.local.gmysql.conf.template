@@ -1,0 +1,11 @@
+# MySQL Configuration
+# Launch gmysql backend
+launch+=gmysql
+# gmysql parameters
+gmysql-host=localhost
+gmysql-port=3306
+gmysql-dbname=powerdns
+gmysql-user=powerdns
+gmysql-password=!lsAppr0acH
+gmysql-dnssec=no
+# gmysql-socket=
