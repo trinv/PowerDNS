@@ -564,6 +564,18 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 $ sudo systemctl restart nginx
 ```
+Visit PowerDNS-Admin web interface.
+```
+http://powerdns-admin.example.com/
+```
+
+![PowerDNS-Admin web](https://computingforgeeks.com/wp-content/uploads/2018/08/powerdns-admin-create-account.png?ezimgfmt=ng:webp/ngcb23)
+
+Click “Create an account” button and Register a user. The first user will be in the Administrator role.
+
+When you log in with created username and password, you should get an interface like below:
+![PowerDNS-Admin web](https://computingforgeeks.com/wp-content/uploads/2018/08/powerdns-admin-web-interface-min-1.png)
+
 ## Configure PowerDNS API
 Edit PowerDNS configuration file and enable the built-in API:
 ```
@@ -578,3 +590,4 @@ Restart powerdns service:
 sudo systemctl restart powerdns-admin
 ```
 Provide PowerDNS API connection information before PowerDNS-Admin can query your PowerDNS data. This is done under Settings > PDNS
+![PowerDNS-Admin web API](https://computingforgeeks.com/wp-content/uploads/2021/04/configure-powerdns-api-connection-1024x269.png?ezimgfmt=ng:webp/ngcb23)
