@@ -38,18 +38,18 @@ Switch to powerdns database to create tables:
 Create the required tables:
 
 ```
-  CREATE TABLE domains (
-    id                    INT AUTO_INCREMENT,
-    name                  VARCHAR(255) NOT NULL,
-    master                VARCHAR(128) DEFAULT NULL,
-    last_check            INT DEFAULT NULL,
-    type                  VARCHAR(6) NOT NULL,
-    notified_serial       INT UNSIGNED DEFAULT NULL,
-    account               VARCHAR(40) CHARACTER SET 'utf8' DEFAULT NULL,
-    PRIMARY KEY (id)
-    ) Engine=InnoDB CHARACTER SET 'latin1';
+CREATE TABLE domains (
+  id                    INT AUTO_INCREMENT,
+  name                  VARCHAR(255) NOT NULL,
+  master                VARCHAR(128) DEFAULT NULL,
+  last_check            INT DEFAULT NULL,
+  type                  VARCHAR(6) NOT NULL,
+  notified_serial       INT UNSIGNED DEFAULT NULL,
+  account               VARCHAR(40) CHARACTER SET 'utf8' DEFAULT NULL,
+  PRIMARY KEY (id)
+  ) Engine=InnoDB CHARACTER SET 'latin1';
 
-  CREATE UNIQUE INDEX name_index ON domains(name);
+CREATE UNIQUE INDEX name_index ON domains(name);
 
 CREATE TABLE records (
   id                    BIGINT AUTO_INCREMENT,
