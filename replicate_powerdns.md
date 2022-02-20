@@ -43,7 +43,20 @@ Which will give you something like this:
 1 row in set (0.01 sec)
 ```
 The ‘File’ and ‘Position’ are important, we will come back to them shortly.
-
+## Export & Import database from Master to Slave
+### On DB Master:
+```
+mysqldump -u root -p --databases powerdns > /root/db_dump.sql
+```
+Copy the db from master to slave:
+```
+scp /root/db_dump.sql chadmin@192.168.30.4:/home/chadmin/
+```
+### On DB Slave:
+```
+cp /home/chadmin/db_dump.sql /root/
+mysql -u root -p < /root/db_dump.sql
+```
 ## MySQL Replication – Slave server
 On the slave server we are again editing the same file:
 ```
