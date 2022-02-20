@@ -17,12 +17,22 @@ Next we need to add the slave user:
 ```
 mysql -u root -p
 ```
+On Mariadb:
 ```
 GRANT REPLICATION SLAVE ON *.* TO 'pdns-secondary'@'<SECONDARY_SERVER_IP>' IDENTIFIED BY '<SECRET_PASSWORD>';
+```
+On MySQL:
+```
+CREATE USER 'pdns-secondary'@'<SECONDARY_SERVER_IP>' IDENTIFIED with mysql_native_password BY '<SECRET_PASSWORD>';
+GRANT REPLICATION SLAVE ON *.* TO 'pdns-secondary'@'<SECONDARY_SERVER_IP>';
 ```
 Remember to set the secondary IP and the secondary password.
 ```
 FLUSH PRIVILEGES;
+```
+Lock all tables on data, read only
+```
+FLUSH TABLES WITH READ LOCK;
 ```
 You can see if its working by running:
 ```
@@ -56,6 +66,12 @@ scp /root/db_dump.sql chadmin@192.168.30.4:/home/chadmin/
 ```
 cp /home/chadmin/db_dump.sql /root/
 mysql -u root -p < /root/db_dump.sql
+```
+### Unlock DB on Master
+```
+mysql -u root -p
+> UNLOCK TABLES;
+> QUIT;
 ```
 ## MySQL Replication – Slave server
 On the slave server we are again editing the same file:
