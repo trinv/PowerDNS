@@ -23,10 +23,15 @@ Once the database server is installed and running, proceed to create the PowerDN
   CREATE DATABASE powerdns;
 ```
 Next is to create powerdns database user and assign privileges:
+On Mariadb:
 ```
   GRANT ALL ON powerdns.* TO 'powerdns'@'localhost' IDENTIFIED BY 'Str0ngPasswOrd';
 ```
-
+On MySQL:
+```
+CREATE USER 'powerdns'@'localhost' IDENTIFIED BY 'Str0ngPasswOrd';
+GRANT ALL PRIVILEGES ON powerdns.* TO 'powerdns'@'localhost';
+```
 Flush the privileges to update the user settings:
 ```
   FLUSH PRIVILEGES;
