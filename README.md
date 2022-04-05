@@ -72,11 +72,9 @@ CREATE TABLE records (
 ) Engine=InnoDB CHARACTER SET 'latin1';
 
 CREATE INDEX nametype_index ON records(name,type);
-```
-```
+
 CREATE INDEX domain_id ON records(domain_id);
-```
-```
+
 CREATE INDEX ordername ON records (ordername);
 
 CREATE TABLE supermasters (
