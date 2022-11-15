@@ -300,12 +300,12 @@ sudo apt install -y libmysqlclient-dev libsasl2-dev libldap2-dev libssl-dev libx
 ```
 Install Node.js
 ```
-curl -sL https://deb.nodesource.com/setup_10.x | bash -
+curl -sL https://deb.nodesource.com/setup_14.x | bash -
 apt install -y nodejs
 ```
 Install yarn to build asset files:
 ```
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update -y
 sudo apt install -y yarn
