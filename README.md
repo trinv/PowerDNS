@@ -312,7 +312,7 @@ sudo apt install -y yarn
 ```
 Checkout source code and create virtualenv:
 ```
-git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git /opt/web/powerdns-admin
+git clone https://github.com/PowerDNS-Admin/PowerDNS-Admin.git /opt/web/powerdns-admin
 cd /opt/web/powerdns-admin
 virtualenv -p python3 flask
 ```
