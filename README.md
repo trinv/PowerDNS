@@ -12,20 +12,20 @@ We need to install database server which will be used by PowerDNS to store zone 
 
 For installation of MariaDB on Ubuntu / Debian Linux Server:
 ```
-  sudo apt update
-  sudo apt install mariadb-server -y
+sudo apt update
+sudo apt install mariadb-server -y
 ```
 Once the database server is installed and running, proceed to create the PowerDNS Database and User Account in MariaDB.
 ```
-  $ sudo mysql -u root -p
+$ sudo mysql -u root -p
 ```
 ``` 
-  CREATE DATABASE powerdns;
+CREATE DATABASE powerdns;
 ```
 Next is to create powerdns database user and assign privileges:
 On Mariadb:
 ```
-  GRANT ALL ON powerdns.* TO 'powerdns'@'localhost' IDENTIFIED BY 'Str0ngPasswOrd';
+GRANT ALL ON powerdns.* TO 'powerdns'@'localhost' IDENTIFIED BY 'Str0ngPasswOrd';
 ```
 On MySQL:
 ```
@@ -34,14 +34,14 @@ GRANT ALL PRIVILEGES ON powerdns.* TO 'powerdns'@'localhost';
 ```
 Flush the privileges to update the user settings:
 ```
-  FLUSH PRIVILEGES;
+FLUSH PRIVILEGES;
 ```
 Switch to powerdns database to create tables:
 ```
-  USE powerdns;
+USE powerdns;
 ```
 Create the required tables:
-
+Or using the PowerDNS Schema up-to-date: https://doc.powerdns.com/authoritative/backends/generic-mysql.html
 ```
 CREATE TABLE domains (
   id                    INT AUTO_INCREMENT,
@@ -296,7 +296,7 @@ sudo apt-get install python3-dev
 ```
 Install required packages for building python libraries from requirements.txt file
 ```
-sudo apt install -y libmysqlclient-dev libsasl2-dev libldap2-dev libssl-dev libxml2-dev libxslt1-dev libxmlsec1-dev libffi-dev pkg-config apt-transport-https virtualenv build-essential
+sudo apt install -y default-libmysqlclient-dev libsasl2-dev libldap2-dev libssl-dev libxml2-dev libxslt1-dev libxmlsec1-dev libffi-dev pkg-config apt-transport-https virtualenv build-essential
 ```
 Install Node.js
 ```
