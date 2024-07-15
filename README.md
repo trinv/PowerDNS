@@ -292,7 +292,7 @@ PowerDNS-Admin is a PowerDNS web interface with the following advanced features:
 
 Install Python 3 development package
 ```
-sudo apt-get install python3-dev
+sudo apt install -y python3-dev git libsasl2-dev libldap2-dev python3-venv libmariadb-dev pkg-config build-essential curl libpq-dev
 ```
 Install required packages for building python libraries from requirements.txt file
 ```
@@ -310,7 +310,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update -y
 sudo apt install -y yarn
 ```
-Checkout source code and create virtualenv:
+1. Checkout source code and create virtualenv:
 ```
 git clone https://github.com/PowerDNS-Admin/PowerDNS-Admin.git /opt/web/powerdns-admin
 cd /opt/web/powerdns-admin
@@ -421,6 +421,40 @@ Test that your PowerDNS-Admin runs fine:
 [WARNING] * Debugger is active!
 [INFO] * Debugger PIN: 466-405-858
 ```
+2. Checkout source code and create virtualenv
+```
+git clone https://github.com/PowerDNS-Admin/PowerDNS-Admin.git /opt/web/powerdns-admin
+cd /opt/web/powerdns-admin
+python3 -mvenv ./venv
+```
+Activate your python3 environment and install libraries:
+```
+source ./venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+Running PowerDNS-Admin
+Create PowerDNS-Admin config file and make the changes necessary for your use case. Make sure to change SECRET_KEY to a long random string that you generated yourself (see Flask docs), do not use the pre-defined one. E.g.:
+```
+cp /opt/web/powerdns-admin/configs/development.py /opt/web/powerdns-admin/configs/production.py
+vim /opt/web/powerdns-admin/configs/production.py
+export FLASK_CONF=../configs/production.py
+```
+Do the DB migration
+```
+export FLASK_APP=powerdnsadmin/__init__.py
+flask db upgrade
+```
+Then generate asset files
+```
+yarn install --pure-lockfile
+flask assets build
+```
+Now you can run PowerDNS-Admin by command
+```
+./run.py
+```
+This is good for testing, but for production usage, you should use gunicorn or uwsgi. See [Running PowerDNS Admin with Systemd](https://github.com/PowerDNS-Admin/PowerDNS-Admin/blob/master/docs/wiki/web-server/Running-PowerDNS-Admin-with-Systemd-Gunicorn-and-Nginx.md), Gunicorn and Nginx for instructions.
 
 ## We’re going to be managing PowerDNS-Admin with systemd.
 
