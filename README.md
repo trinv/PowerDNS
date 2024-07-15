@@ -310,7 +310,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update -y
 sudo apt install -y yarn
 ```
-1. Checkout source code and create virtualenv:
+## Solution 1. Checkout source code and create virtualenv:
 ```
 git clone https://github.com/PowerDNS-Admin/PowerDNS-Admin.git /opt/web/powerdns-admin
 cd /opt/web/powerdns-admin
@@ -421,7 +421,7 @@ Test that your PowerDNS-Admin runs fine:
 [WARNING] * Debugger is active!
 [INFO] * Debugger PIN: 466-405-858
 ```
-2. Checkout source code and create virtualenv
+## Solution 2. Checkout source code and create virtualenv
 ```
 git clone https://github.com/PowerDNS-Admin/PowerDNS-Admin.git /opt/web/powerdns-admin
 cd /opt/web/powerdns-admin
@@ -434,7 +434,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 Running PowerDNS-Admin
-Create PowerDNS-Admin config file and make the changes necessary for your use case. Make sure to change SECRET_KEY to a long random string that you generated yourself (see Flask docs), do not use the pre-defined one. E.g.:
+Create PowerDNS-Admin config file and make the changes necessary for your use case. Make sure to change SECRET_KEY to a long random string that you generated yourself ([see Flask docs](https://flask.palletsprojects.com/en/1.1.x/config/#SECRET_KEY)), do not use the pre-defined one. E.g.:
 ```
 cp /opt/web/powerdns-admin/configs/development.py /opt/web/powerdns-admin/configs/production.py
 vim /opt/web/powerdns-admin/configs/production.py
