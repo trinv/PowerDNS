@@ -1,3 +1,4 @@
+```
 204.225.113.11:7797 powerdns01 > 172.16.56.20
 204.225.113.11:7798 powerdns02 > 172.16.56.21
 204.225.113.11:7800 powerdns01-admin > 172.16.85.20
@@ -358,7 +359,7 @@ mysqldump -u root -p --databases pdns > /root/db_dump.sql
 mysql -u root -p < /root/db_dump.sql
 
 
-
+```
 
 
 
